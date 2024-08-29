@@ -1,19 +1,12 @@
-import  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import data from './assets/data.json';  // Adjust this path if necessary
 
 const App = () => {
-  const [data, setData] = useState([]);
   const [fromCurrency, setFromCurrency] = useState('');
   const [toCurrency, setToCurrency] = useState('');
   const [amount, setAmount] = useState('');
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [exchangeRate, setExchangeRate] = useState(null);
-
-  useEffect(() => {
-    fetch('/src/assets/data.json')
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error('Error fetching the data:', error));
-  }, []);
 
   const handleConvert = () => {
     if (fromCurrency && toCurrency && amount) {
